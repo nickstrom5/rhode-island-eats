@@ -1,0 +1,107 @@
+{
+ "generated": "2026-11-04",
+ "domain": "https://nickstrom5.github.io/rhode-island-eats",
+ "restaurants": 2828,
+ "places_incl_hidden": 2929,
+ "towns": 39,
+ "counties": 22,
+ "on_an_official_list": 0,
+ "hand_checked_on_a_guide": 59,
+ "serves_alcohol_state_license": 0,
+ "guide_wieners": 6,
+ "guide_clams": 13,
+ "guide_fedhill": 7,
+ "guide_strips": 3,
+ "guide_portuguese": 3,
+ "guide_sweets": 26,
+ "oldest": 3,
+ "honors": 6,
+ "michelin": {},
+ "james_beard": 6,
+ "americas_classics": 2,
+ "permits_updated": "2025",
+ "city_pages": {
+  "Providence": {
+   "restaurants": 622,
+   "listed": 17,
+   "wieners": 2,
+   "clams": 1,
+   "fedhill": 7,
+   "strips": 1,
+   "portuguese": 0,
+   "sweets": 2,
+   "hon": 5,
+   "oldest": 1
+  },
+  "Warwick": {
+   "restaurants": 217,
+   "listed": 5,
+   "wieners": 1,
+   "clams": 1,
+   "fedhill": 0,
+   "strips": 0,
+   "portuguese": 0,
+   "sweets": 3,
+   "hon": 0,
+   "oldest": 0
+  },
+  "Narragansett": {
+   "restaurants": 58,
+   "listed": 6,
+   "wieners": 0,
+   "clams": 5,
+   "fedhill": 0,
+   "strips": 0,
+   "portuguese": 0,
+   "sweets": 1,
+   "hon": 1,
+   "oldest": 1
+  },
+  "Middletown": {
+   "restaurants": 72,
+   "listed": 4,
+   "wieners": 0,
+   "clams": 2,
+   "fedhill": 0,
+   "strips": 0,
+   "portuguese": 0,
+   "sweets": 2,
+   "hon": 0,
+   "oldest": 0
+  }
+ },
+ "cities_without_a_page": {
+  "Newport": 2,
+  "Cranston": 2,
+  "South Kingstown": 3,
+  "Westerly": 1,
+  "Pawtucket": 1,
+  "East Providence": 1,
+  "Bristol": 2,
+  "Warren": 2,
+  "Tiverton": 3,
+  "North Kingstown": 2,
+  "Johnston": 2,
+  "New Shoreham": 0,
+  "Charlestown": 1
+ },
+ "noindex_pages": [],
+ "web_app_data_bytes": {
+  "data/core.json": {
+   "raw": 210521,
+   "gzip": 46585
+  },
+  "data/detail-rhode-island.json": {
+   "raw": 156145,
+   "gzip": 38695
+  },
+  "data/ids.json": {
+   "raw": 36792,
+   "gzip": 21670
+  },
+  "data/ri_shapes.json": {
+   "raw": 163078,
+   "gzip": 39979
+  }
+ }
+}
