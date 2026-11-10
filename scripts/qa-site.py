@@ -798,7 +798,7 @@ def webapp_family_bugs(browser, base, problems):
     page.goto(base + BASE + "/", wait_until="networkidle")
     page.goto(ex + "#g=wieners", wait_until="networkidle")
     page.wait_for_selector(".ex-row")
-    page.fill("#ex-q", "crickets")
+    page.fill("#ex-q", "wallys")
     page.wait_for_timeout(500)
     page.locator(".ex-row").first.click()
     page.wait_for_selector("#ex-panel:not([hidden])")
@@ -809,7 +809,7 @@ def webapp_family_bugs(browser, base, problems):
         problems.append(f"explore @1280: the open place isn't a modal dialog with focus inside and the page inert: {state}")
     page.go_back()
     page.wait_for_timeout(600)
-    if page.locator("#ex-panel").is_visible() or not page.url.startswith(ex) or page.input_value("#ex-q") != "crickets":
+    if page.locator("#ex-panel").is_visible() or not page.url.startswith(ex) or page.input_value("#ex-q") != "wallys":
         problems.append(f"explore @1280: Back with a place open didn't close it and keep the search ({page.url})")
     page.go_forward()
     page.wait_for_timeout(800)
@@ -836,7 +836,7 @@ def webapp_family_bugs(browser, base, problems):
     if "Nearest" in page.locator("#ex-count").inner_text():
         problems.append("explore: says 'Nearest' after location was denied")
     ctx.close()
-    ctx = browser.new_context(viewport={"width": 1280, "height": 800}, geolocation={"latitude": 33.7816, "longitude": -84.3836}, permissions=["geolocation"])
+    ctx = browser.new_context(viewport={"width": 1280, "height": 800}, geolocation={"latitude": 41.824, "longitude": -71.4128}, permissions=["geolocation"])   # Providence
     page = ctx.new_page()
     page.goto(ex + "#g=wieners", wait_until="networkidle")
     page.wait_for_selector(".ex-row")
@@ -1048,12 +1048,12 @@ def browser_checks(problems):
             page.goto(ex + "#g=wieners", wait_until="networkidle")
             page.wait_for_function("document.querySelectorAll('.ex-row').length > 0", timeout=30000)
             search = page.locator('#ex-q').first
-            for word in ("crickets", "hungry"):
+            for word in ("wallys", "olneyville"):
                 search.fill(word)
                 page.wait_for_timeout(500)
-                want, got = expected_hits(rows, 4, word), page.locator(".ex-row").count()
+                want, got = expected_hits(rows, 1, word), page.locator(".ex-row").count()
                 if got != want or not want:
-                    problems.append(f"explore @{width}: '{word}' listed {got} lemon pepper wing places, expected the {want} with that name")
+                    problems.append(f"explore @{width}: '{word}' listed {got} hot wiener places, expected the {want} with that name")
             problems += bib_problems(page, ex, width) if expected_bib() else []   # Rhode Island has no MICHELIN Guide
             # direction words: "north main" finds N Main St addresses (and not only North Providence or North Kingstown)
             page.goto(ex + "#g=all", wait_until="networkidle")
@@ -1113,7 +1113,7 @@ def browser_checks(problems):
             # a shared #p= link opens that place
             target = next((i for i, r in enumerate(rows) if r.get("hc") == 1 and (r.get("g") or 0) & 4), None)
             if target is not None:
-                page.goto(ex + "#g=bbq&p=" + ids[target], wait_until="networkidle")
+                page.goto(ex + "#g=wieners&p=" + ids[target], wait_until="networkidle")
                 page.reload(wait_until="networkidle")
                 page.wait_for_timeout(1500)
                 name = page.locator("#ex-pname").inner_text() if page.locator("#ex-pname").count() else ""
@@ -1128,7 +1128,7 @@ def browser_checks(problems):
             painted = page.evaluate("""(() => { const c = document.querySelector('#ex-map'); const d = c.getContext('2d').getImageData(0, 0, c.width, c.height).data;
                 let n = 0; for (let i = 0; i < d.length; i += 4) if (d[i] > 170 && d[i] < 210 && d[i + 1] < 30 && d[i + 2] > 30 && d[i + 2] < 70) n++; return n; })()""")
             if painted < 20:
-                problems.append(f"explore @{width}: the map drew no red dots for the barbecue joints ({painted} pixels)")
+                problems.append(f"explore @{width}: the map drew no red dots for the hand-checked places ({painted} pixels)")
             if not page.locator("#ex-mapattr").is_visible():
                 problems.append(f"explore @{width}: the map's OpenStreetMap/Overture credit isn't visible")
             for hostile in ("#g=constructor", "#g=__proto__&sort=toString", "#g=all&p=__proto__"):
